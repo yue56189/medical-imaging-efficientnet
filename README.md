@@ -2,10 +2,11 @@
 
 用 **EfficientNet 预训练模型 + 两阶段迁移学习** 做医疗影像疾病分类。
 
-本项目复刻并**修正**了一个 GitHub 上的引流仓库
-（`QQ767172261/Deep-Learning_Using-Convolutional-Neural-Networks-CNNs-to-select-EfficientNet-pretrained-models-for-`，
-该仓库只有 README 广告和几段不可运行的示例代码，数据集需付费）。
-本项目用**公开数据集**重写了完整可跑的工程，并已用真实数据完成训练（见「实验结果」）。
+本项目的技术路线受一个公开 GitHub 项目启发——该项目提出了「使用卷积神经网络选择
+EfficientNet 预训练模型，对 CT、X 光、MRI 医疗影像数据集进行微调」的完整思路框架
+（数据组织方式、迁移学习流程、优化方向），但未提供可直接运行的代码实现与公开数据。
+本项目基于**公开数据集**与**开源工具链**，围绕同一技术路线独立完成了全流程工程实现，
+并用真实数据完成了训练验证（见「实验结果」）。
 
 ## 功能
 
@@ -77,7 +78,8 @@ medical-imaging-efficientnet/
 │   └── predict.py     # 推理 + 热力图
 ├── scripts/
 │   ├── download_data.py   # 公开数据集下载助手
-│   └── split_dataset.py   # train/val/test 分层划分
+│   ├── make_splits.py     # 自带 train/test 的数据集切 val
+│   └── split_dataset.py   # 扁平目录 → train/val/test 分层划分
 ├── docs/
 │   └── 技术文档.md        # 完整技术文档
 └── results/           # 本次真实训练的实验产物（模型、指标、图）
@@ -93,7 +95,7 @@ medical-imaging-efficientnet/
 | Test accuracy | **91.4%** |
 | Test macro ROC-AUC | **0.9821** |
 | 最佳 val macro-F1 | 0.9533（第 7 epoch） |
-| 分类报告 | glioma F1 0.87（recall 0.77，短板）/ meningioma 0.90 / notumor 0.94 / pituitary 0.94 |
+| 分类报告 | glioma F1 0.87（recall 0.77，明显偏弱）/ meningioma 0.90 / notumor 0.94 / pituitary 0.94 |
 
 产物（模型 best.pt 15.6MB、训练曲线、混淆矩阵、ROC、Grad-CAM 示例）见
 [`results/`](results/) 目录，完整分析见
@@ -104,8 +106,9 @@ val(95.3%) 高于 test(91.4%) 属正常——val 参与了模型选择，test �
 
 ## 技术文档
 
-[`docs/技术文档.md`](docs/技术文档.md)：原仓库分析、数据集选型、训练方法学、
-评估方案、已知坑（Kaggle val 集陷阱、患者级数据泄漏、医学增强禁忌）、复现步骤。
+[`docs/技术文档.md`](docs/技术文档.md)：项目来源、数据集选型、训练方法学、
+评估方案、数据划分注意事项、复现步骤，以及 20 篇权威文献导读
+（中文 10 篇 + 英文 10 篇，均附与本研究的关联性说明）。
 
 ## 数据来源与引用
 

@@ -33,10 +33,13 @@ def main():
     idx_to_class = {i: c for c, i in class_to_idx.items()}
     _, val_tf = build_transforms(img_size)
 
-    # 收集待预测图片
+    # 收集待预测图片（目录时递归遍历，支持 test/<类别>/*.jpg 结构）
     if os.path.isdir(args.image):
-        paths = [os.path.join(args.image, f) for f in sorted(os.listdir(args.image))
-                 if f.lower().endswith(IMG_EXTENSIONS)]
+        paths = []
+        for root, _, files in os.walk(args.image):
+            for f in sorted(files):
+                if f.lower().endswith(IMG_EXTENSIONS):
+                    paths.append(os.path.join(root, f))
     else:
         paths = [args.image]
     if not paths:

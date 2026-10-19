@@ -1,0 +1,117 @@
+{
+  "classes": [
+    "glioma",
+    "meningioma",
+    "notumor",
+    "pituitary"
+  ],
+  "class_to_idx": {
+    "glioma": 0,
+    "meningioma": 1,
+    "notumor": 2,
+    "pituitary": 3
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "stage": "freeze",
+      "lr": 0.001,
+      "train_loss": 2.3445,
+      "val_loss": 1.5983,
+      "train_acc": 0.4189,
+      "val_acc": 0.5643,
+      "val_f1": 0.5664
+    },
+    {
+      "epoch": 2,
+      "stage": "freeze",
+      "lr": 0.001,
+      "train_loss": 1.3134,
+      "val_loss": 1.3538,
+      "train_acc": 0.6265,
+      "val_acc": 0.6167,
+      "val_f1": 0.6147
+    },
+    {
+      "epoch": 3,
+      "stage": "finetune",
+      "lr": 0.0001,
+      "train_loss": 0.5087,
+      "val_loss": 0.3663,
+      "train_acc": 0.8513,
+      "val_acc": 0.8881,
+      "val_f1": 0.8872
+    },
+    {
+      "epoch": 4,
+      "stage": "finetune",
+      "lr": 0.0001,
+      "train_loss": 0.1665,
+      "val_loss": 0.2696,
+      "train_acc": 0.9426,
+      "val_acc": 0.9155,
+      "val_f1": 0.9147
+    },
+    {
+      "epoch": 5,
+      "stage": "finetune",
+      "lr": 0.0001,
+      "train_loss": 0.0999,
+      "val_loss": 0.2322,
+      "train_acc": 0.9653,
+      "val_acc": 0.9345,
+      "val_f1": 0.9337
+    },
+    {
+      "epoch": 6,
+      "stage": "finetune",
+      "lr": 0.0001,
+      "train_loss": 0.0569,
+      "val_loss": 0.2031,
+      "train_acc": 0.9786,
+      "val_acc": 0.9452,
+      "val_f1": 0.945
+    },
+    {
+      "epoch": 7,
+      "stage": "finetune",
+      "lr": 0.0001,
+      "train_loss": 0.04,
+      "val_loss": 0.1916,
+      "train_acc": 0.9878,
+      "val_acc": 0.9536,
+      "val_f1": 0.9533
+    },
+    {
+      "epoch": 8,
+      "stage": "finetune",
+      "lr": 0.0001,
+      "train_loss": 0.0281,
+      "val_loss": 0.198,
+      "train_acc": 0.9908,
+      "val_acc": 0.9452,
+      "val_f1": 0.9452
+    },
+    {
+      "epoch": 9,
+      "stage": "finetune",
+      "lr": 0.0001,
+      "train_loss": 0.0311,
+      "val_loss": 0.1647,
+      "train_acc": 0.9905,
+      "val_acc": 0.9524,
+      "val_f1": 0.9523
+    },
+    {
+      "epoch": 10,
+      "stage": "finetune",
+      "lr": 0.0001,
+      "train_loss": 0.0296,
+      "val_loss": 0.1759,
+      "train_acc": 0.9897,
+      "val_acc": 0.9476,
+      "val_f1": 0.9474
+    }
+  ],
+  "best_val_f1": 0.9533
+}

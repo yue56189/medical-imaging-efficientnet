@@ -24,6 +24,11 @@
 python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
+# 境内网络注意：timm 的 ImageNet 预训练权重默认从 huggingface.co 下载，
+# 直连不通时设置镜像（代码也会自动检测并重启进程切换，但手动设置更稳）：
+#   Windows:  set HF_ENDPOINT=https://hf-mirror.com
+#   Linux:    export HF_ENDPOINT=https://hf-mirror.com
+
 # 2. 下载公开数据集（默认 Kaggle；免登录走 HF 镜像或 figshare 直链）
 python scripts/download_data.py list                    # 看有哪些数据集
 python scripts/download_data.py download mri_brain_hf --dest D:/datasets/mri_brain_raw
@@ -80,9 +85,22 @@ medical-imaging-efficientnet/
 
 ## 实验结果
 
-已用 Brain Tumor MRI 数据集（7,200 张）完成真实训练，完整指标、混淆矩阵、
-训练曲线、Grad-CAM 示例见 [`results/`](results/) 目录和
+已用 Brain Tumor MRI 数据集（7,200 张，4 类）在本机 **CPU 真实训练**（EfficientNet-b0，
+两阶段共 10 epochs，40 分钟）：
+
+| 指标 | 值 |
+|---|---|
+| Test accuracy | **91.4%** |
+| Test macro ROC-AUC | **0.9821** |
+| 最佳 val macro-F1 | 0.9533（第 7 epoch） |
+| 分类报告 | glioma F1 0.87（recall 0.77，短板）/ meningioma 0.90 / notumor 0.94 / pituitary 0.94 |
+
+产物（模型 best.pt 15.6MB、训练曲线、混淆矩阵、ROC、Grad-CAM 示例）见
+[`results/`](results/) 目录，完整分析见
 [技术文档 - 实验结果](docs/技术文档.md#8-实验结果)。
+
+主要错分：glioma → meningioma（36 张）、glioma → notumor（33 张）。
+val(95.3%) 高于 test(91.4%) 属正常——val 参与了模型选择，test 才是无偏泛化估计。
 
 ## 技术文档
 

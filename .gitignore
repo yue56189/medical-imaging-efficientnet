@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 数据与训练产物（体积大，不入库）
+data/
+runs/
+outputs/
+*.pth
+*.pt
+*.onnx
+
+# 例外：results/ 目录下的实验产物（模型、指标、图）要入库
+!results/
+!results/**
+
+# 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

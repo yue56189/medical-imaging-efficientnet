@@ -82,7 +82,9 @@ medical-imaging-efficientnet/
 │   └── split_dataset.py   # 扁平目录 → train/val/test 分层划分
 ├── docs/
 │   └── 技术文档.md        # 完整技术文档
-└── results/           # 本次真实训练的实验产物（模型、指标、图）
+├── references/           # 20 篇参考文献的原文 PDF 包（10 篇可公开获取）+ 获取说明
+├── results/              # 本次真实训练的实验产物（模型、指标、图）
+└── references_pdfs.zip   # 文献 PDF 打包（29.7MB，编号与技术文档一一对应）
 ```
 
 ## 实验结果
@@ -109,6 +111,11 @@ val(95.3%) 高于 test(91.4%) 属正常——val 参与了模型选择，test �
 [`docs/技术文档.md`](docs/技术文档.md)：项目来源、数据集选型、训练方法学、
 评估方案、数据划分注意事项、复现步骤，以及 20 篇权威文献导读
 （中文 10 篇 + 英文 10 篇，均附与本研究的关联性说明）。
+
+**文献 PDF 包**：[`references/`](references/) 收录 10 篇可公开获取的原文 PDF
+（编号 01–20 与技术文档一一对应），打包下载 [`references_pdfs.zip`](references_pdfs.zip)；
+其余 10 篇受付费墙限制，官方链接与获取方式见 [`references/README.md`](references/README.md)
+与技术文档 13.4 节。
 
 ## 数据来源与引用
 
